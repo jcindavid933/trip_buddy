@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'projectweekapp/css/home.css' %}">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Jquery library -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <title>Project Week</title>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+              }
+            }
+          }
+          return cookieValue;
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+          // these HTTP methods do not require CSRF protection
+          return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+        $('#register-form').submit(function(e){
+          e.preventDefault();
+          $.ajax({
+            url: '/login',
+            method: 'post',
+            data: $(this).serialize(),
+            success: function(serverResponse){
+              if(serverResponse != ''){
+                $('.error_container').html(serverResponse);
+              }
+              else{
+                $("#register-form").trigger('submit', [true]);
+              }
+            }
+          })
+        })
+        $('#email').click(function(){
+          $('.error_container').empty();
+        })
+        $('#bottom_input').click(function(){
+          $('.error_container').empty();
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="master-wrapper">
+      <div class="nav-container">
+        <nav>
+          <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+            <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
+            <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
+            <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="master-login-container">
+        <div class="login-container center">
+          <h1 class="center page-font home-header">Samurai</h1>
+          <h4 class="center page-font">Share. Post. Watch.</h4>
+          <p class= "center page-font">Experience The Dojo</p>
+          <div class="btn-container">
+              <form id='register-form' action="/login" method="post">
+                {% csrf_token %}
+                <i class="material-icons prefix">account_circle</i>
+                <div class="input-field col s6">
+                  <input id='email' type="text" name='login_email' placeholder="Email: ">
+                  <input id='bottom_input' type="password" name='login_password' placeholder="Password: ">
+                </div>
+                <div>
+                  <p class="error_container"></p>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+          </div>
+          <a class="page-font" href="#">See What's New</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

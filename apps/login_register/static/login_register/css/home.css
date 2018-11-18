@@ -1,0 +1,153 @@
+{% load staticfiles %}
+
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+html{
+  position: absolute; top: 0; left: 0; height: 100%; width: 100%;
+  background: linear-gradient(#b48ead, #ebcb8b);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.master-wrapper{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-container{
+  width: 400px;
+  margin-left: 16%;
+}
+
+.divimage{
+  background-size: cover;
+}
+img{
+  width: 100px;
+}
+
+.nav-container{
+  width: 100%;
+  height: 8%;
+  min-height: 50px;
+}
+
+.master-login-container{
+  height: 50%;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 5%;
+  background-color: transparent;
+}
+
+.login-container{
+  padding: 17px;
+}
+
+.input-field{
+  background-color: #fffdfd;
+}
+
+#bottom_input{
+  margin-bottom: 0px;
+}
+
+.btn-container{
+  margin-top: 5%;
+  width: 60%;
+  height: 20%;
+  margin-left: 20%;
+}
+
+.dark-blue{
+  background-color: #2e3440 !important;
+}
+.navy-blue{
+  background-color: #3b4252 !important;
+}
+.red{
+  background-color: #bf616a;
+}
+.green{
+  background-color: #a3be8c;
+}
+.yellow{
+  background-color: #ebcb8b;
+}
+.light-blue{
+  background-color: #81a1c1;
+}
+.purple{
+  background-color: #b48ead;
+}
+.cyan{
+  background-color: #b48ead;
+}
+.white{
+  background-color: #e5e9f0;
+}
+
+.page-font{
+  color: #e5e9f0;
+}
+
+.btn {
+   width: 100% !important;
+   height: 60% !important;
+   margin-bottom: 4%;
+   font-size: 14pt !important;
+   line-height: 2.5 !important;
+}
+
+.home-header{
+  margin-bottom: 0 !important;
+  margin-top: 10% !important;
+}
+
+#navcontainer{
+  width: 100%;
+  height: 20%;
+  padding: 0 !important;
+  margin: 0! !important;
+  box-shadow: 0px !important;
+}
+
+nav{
+  width: 100%;
+  height: 100% !important;
+  background-color: rgb(0,0,0,0) !important;
+  box-shadow: none !important;
+}
+
+nav ul a{
+  height: 100% !important;
+}
+
+.halfway-fab{
+  background-color: #a3be8c !important;
+}
+
+h1{
+  margin-bottom: 8% !important;
+}
+h5{
+  margin-bottom: 8% !important;
+}
+/*
+colors:
+  Dark Blue: #2e3440
+  Navy Blue: #3b4252
+  Red:       #bf616a
+  Green:     #a3be8c
+  Yellow:    #ebcb8b
+  light Blue:#81a1c1
+  Purple:    #b48ead
+  Cyan:      #b48ead
+  White:     #e5e9f0
+*/

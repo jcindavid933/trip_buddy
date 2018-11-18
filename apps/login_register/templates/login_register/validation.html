@@ -1,0 +1,13 @@
+<p>{{username_length}}</p>
+<p>{{username_exist}}</p>
+<p>{{email}}</p>
+<p>{{email_exists}}</p>
+<p>{{age_young}}</p>
+<p>{{age_old}}</p>
+<p>{{password}}</p>
+
+{% if messages %}
+  {% for msg in messages %}
+    <p>{{msg.message}}</p>
+  {% endfor %}
+{% endif %}
